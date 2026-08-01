@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+height:100vh;
+background:linear-gradient(135deg,#1f1f1f,#555,#222);
+color:white;
+overflow:hidden;
+}
+
+.page{
+height:100vh;
+width:100%;
+display:none;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+padding:25px;
+}
+
+.active{
+display:flex;
+}
+
+h1{
+font-size:45px;
+margin-bottom:25px;
+}
+
+p{
+font-size:22px;
+line-height:1.6;
+}
+
+button{
+margin-top:35px;
+padding:15px 40px;
+border:0;
+border-radius:50px;
+font-size:20px;
+cursor:pointer;
+background:white;
+color:#333;
+}
+
+
+/* Page 1 */
+
+#welcome h1{
+font-size:50px;
+}
+
+
+/* Loading */
+
+#count{
+font-size:60px;
+font-weight:bold;
+margin-top:20px;
+}
+
+
+/* Wish */
+
+.wish{
+font-size:28px;
+max-width:800px;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- PAGE 1 -->
+
+<div class="page active" id="page1">
+
+<h1>✨ Welcome Dattu ✨</h1>
+
+<p>
+I have a special surprise for you ❤️
+</p>
+
+<button onclick="openPage(2)">
+Next
+</button>
+
+</div>
+
+
+
+<!-- PAGE 2 -->
+
+<div class="page" id="page2">
+
+<h1>Loading...</h1>
+
+<div id="count">
+0%
+</div>
+
+</div>
+
+
+
+<!-- PAGE 3 -->
+
+<div class="page" id="page3">
+
+<h1>
+🎉 Happy Birthday Dattu 🎉
+</h1>
+
+<p class="wish">
+
+Wishing you a very Happy Birthday ❤️<br><br>
+
+May your life always be filled with happiness,
+smiles, success and beautiful memories.<br><br>
+
+Keep smiling and keep shining ✨
+
+</p>
+
+
+<button onclick="openPage(4)">
+Next
+</button>
+
+</div>
+<!-- PAGE 4 -->
+
+<div class="page" id="page4">
+
+<h1>💌 Small Shayari</h1>
+
+<p>
+
+Roses are red, 🌹<br>
+Violets are blue, 💙<bt></bt>
+The world feels brighter, ✨<br>
+When there is someone like you. ❤️,
+
+</p>
+
+
+<button onclick="openPage(5)">
+😁 Click Here butki
+</button>
+
+</div>
+
+
+
+<!-- PAGE 5 -->
+
+<div class="page" id="page5">
+
+<div class="scrollBox">
+
+<p style="margin-top:80px;">
+
+Tu mara life ma ek special manas cho. ❤️<br><br>
+
+Tu che to hu happy chu.<br>
+Bas tu hamesha avi j hasti re<br>
+ane hamesha khush re, e j mari wish che. ✨<br><br>
+
+Thank you ane thoduk niche scroll krto ❤️
+
+</p>
+
+
+<h2 style="margin-top:180px;">
+⬇️ Keep Scrolling ⬇️
+</h2>
+
+
+<h1 style="margin-top:220px;">
+🎉 Party no bhulti Dattu 😁🎂
+</h1>
+</>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+function openPage(n){
+
+document.querySelector(".active").classList.remove("active");
+
+document.getElementById("page"+n).classList.add("active");
+
+
+if(n==2){
+
+loading();
+
+}
+
+}
+
+
+// Loading 1-100
+
+function loading(){
+
+let x=0;
+
+let time=setInterval(()=>{
+
+x++;
+
+document.getElementById("count").innerHTML=x+"%";
+
+
+if(x>=100){
+
+clearInterval(time);
+
+setTimeout(()=>{
+
+openPage(3);
+
+},700);
+
+}
+
+},40);
+
+}
+
+
+// Balloons
+
+function createBalloon(){
+
+let b=document.createElement("div");
+
+b.innerHTML="🎈";
+
+b.style.position="fixed";
+b.style.bottom="-50px";
+b.style.left=Math.random()*100+"vw";
+b.style.fontSize="40px";
+b.style.animation="up 7s linear";
+
+document.body.appendChild(b);
+
+
+setTimeout(()=>{
+
+b.remove();
+
+},7000);
+
+}
+
+setInterval(createBalloon,700);
+
+
+
+</script>
+
+
+<style>
+
+.scrollBox{
+
+height:70vh;
+overflow-y:auto;
+font-size:22px;
+line-height:2;
+padding:20px;
+
+}
+
+
+@keyframes up{
+
+from{
+transform:translateY(0);
+opacity:1;
+}
+
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
+
+}
+
+
+</style>
+
+<audio id="song" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+  <script>
+document.addEventListener("click", function(){
+    document.getElementById("song").play();
+}, {once:true});
+  </script>
+</body>
+</html>
